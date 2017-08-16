@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import {MoviePage} from '../movie/movie'
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,6 +25,7 @@ export class HomePage {
 
   showMovieDetails(movie) {
     console.log(movie);
+    this.navCtrl.push(MoviePage)
     
   }
  
