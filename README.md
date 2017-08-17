@@ -1,3 +1,14 @@
+HelloIonic - LEARNING IONIC 3
+
+<hr>
+
+~~~
+* Discover Ionic 3
+
+* Implementation : CRUD
+~~~
+
+
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
