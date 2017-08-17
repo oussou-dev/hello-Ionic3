@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 
 import {MoviePage} from '../movie/movie'
 
@@ -25,7 +25,8 @@ export class HomePage implements OnInit{
   movieModel: MovieModel;
 
   constructor(public navCtrl: NavController, 
-              public alertCtrl: AlertController) {} 
+              public alertCtrl: AlertController,
+              public toastCtrl: ToastController) {} 
 
   ngOnInit() {
     this.movieModel = new MovieModel();
@@ -85,11 +86,24 @@ export class HomePage implements OnInit{
           handler: data => {
             movie.title = data.movietitle;
             this.movieModel.editMovie(movie);
+            this.presentToast('Film mis à jour', 1000, 'top')
           }
         }
       ]
     }).present();
   }
+
+
+  presentToast (message, duration, position) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: duration,
+      position: position
+    });
+    toast.present();
+  }
+
+
 
   deleteMovie (movie) {
     console.log('delete', movie);
