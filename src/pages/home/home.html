@@ -14,8 +14,22 @@
 
 <ion-content>
  <ion-list>
-  <button ion-item *ngFor="let movie of movies" (click)="showMovieDetails(movie)">
-    {{ movie.id }} - {{ movie.title }}
-  </button>  
+
+  <ion-item-sliding *ngFor="let movie of movies" >
+    <button ion-item (click)="showMovieDetails(movie)">
+      <ion-label >
+        {{ movie.id }} - {{ movie.title }}
+      </ion-label>
+    </button>  
+    <ion-item-options>
+      <button (click) = "deleteMovie(movie)" ion-button icon-only color="danger">
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+      <button (click) = "editMovie(movie)" ion-button icon-only >
+        <ion-icon name="md-create"></ion-icon>
+        </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
 </ion-list>
 </ion-content>
