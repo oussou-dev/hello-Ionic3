@@ -68,12 +68,33 @@ export class HomePage implements OnInit{
 
   editMovie (movie) {
     console.log('edit', movie);
-    
+    this.alertCtrl.create({
+      title: 'Modifier le film',
+      message: 'Saisissez le nouveau titre souhaité',
+      inputs: [
+        {
+          name: 'movietitle'
+        }
+      ],
+      buttons: [
+        {
+          text: 'annuler'
+        },
+        {
+          text: 'mettre à jour',
+          handler: data => {
+            movie.title = data.movietitle;
+            this.movieModel.editMovie(movie);
+          }
+        }
+      ]
+    }).present();
   }
 
   deleteMovie (movie) {
     console.log('delete', movie);
-    
+    this.movieModel.deleteMovie(movie);  
+    this.movies = this.movieModel.getMovies();  
   }
 
 
