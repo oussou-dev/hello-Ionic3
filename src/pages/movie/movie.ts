@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -13,10 +13,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-movie',
   templateUrl: 'movie.html',
 })
-export class MoviePage {
+export class MoviePage implements OnInit {
+
+  movie: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+  ngOnInit() {
+    this.movie = this.navParams.get('movie');
+    console.log('recup', this.movie);
+    
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MoviePage');

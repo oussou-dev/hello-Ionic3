@@ -25,7 +25,7 @@ export class HomePage {
 
   showMovieDetails(movie) {
     console.log(movie);
-    this.navCtrl.push(MoviePage)
+    this.navCtrl.push(MoviePage, {movie: movie})
     
   }
  
