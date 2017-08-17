@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import {MoviePage} from '../movie/movie'
 
@@ -19,9 +19,8 @@ export class HomePage {
     {id: 5, title: 'X-Men'}
   ];
 
-  constructor(public navCtrl: NavController) {
-    
-  }
+  constructor(public navCtrl: NavController, 
+              public alertCtrl: AlertController) {} 
 
   showMovieDetails(movie) {
     console.log(movie);
@@ -29,5 +28,31 @@ export class HomePage {
     
   }
  
+  showAddMovie () {
+     this.alertCtrl.create({
+      title: 'Ajouter un film',
+      message: "Veuillez saisir le titre du film à ajouter",
+      inputs: [
+        {
+          name: 'movietitle',
+          placeholder: 'Titre du film'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Annuler',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Sauvegarder',
+          handler: data => {
+            console.log('Saved clicked', data);
+          }
+        }
+      ]
+    }).present();
+  }
 
 }
